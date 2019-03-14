@@ -1,9 +1,9 @@
 package PT2019.Assignment_1.Assignment_a;
 
-public class Monom implements Comparable{
+public class Monom implements Comparable<Object>{
 	private int pow;
-	private int coef;
-	public Monom(int coef, int pow) {
+	private double coef;
+	public Monom(double coef, int pow) {
 		super();
 		this.pow = pow;
 		this.coef = coef;
@@ -13,6 +13,12 @@ public class Monom implements Comparable{
 		super();
 		this.pow = pow;
 		this.coef = 1;
+	}
+	
+	public Monom(Monom m) {
+		super();
+		this.pow = m.getPow();
+		this.coef = m.getCoef();
 	}
 	
 	public Monom() {
@@ -29,11 +35,11 @@ public class Monom implements Comparable{
 		this.pow = pow;
 	}
 
-	public int getCoef() {
+	public double getCoef() {
 		return coef;
 	}
 
-	public void setCoef(int coef) {
+	public void setCoef(double coef) {
 		this.coef = coef;
 	}
 
@@ -45,11 +51,71 @@ public class Monom implements Comparable{
 				return 1;
 		return -1;
 	}
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return coef+"*x^"+pow;
+	private String toStringInt() {
+		String s = new String();
+		int cof = (int)coef;
+		if(pow == 0)
+			s+=cof;
+		else
+			if(pow==1)
+				if(cof==1)
+					s+="x";
+				else if(cof == -1)
+						s+="-x";
+					 else
+						s+=cof+"x";
+			else
+				if(cof==1)
+					s+="x^"+pow;
+				else if(cof == -1)
+						s+="-x^"+pow;
+					 else
+						s+=cof+"x^"+pow;
+		return s;
 	}
 	
+	@Override
+	public String toString() {
+		String s = new String();
+		if(coef == (int)coef)
+			return this.toStringInt();
+		if(pow == 0)
+			s+=coef;
+		else
+			if(pow==1)
+				if(coef==1)
+					s+="x";
+				else if(coef == -1)
+						s+="-x";
+					 else
+						s+=coef+"x";
+			else
+				if(coef==1)
+					s+="x^"+pow;
+				else if(coef == -1)
+						s+="-x^"+pow;
+					 else
+						s+=coef+"x^"+pow;
+		return s;
+	}
 	
+	public static Monom add(Monom m1,Monom m2) {
+		if(m1.getPow()==m2.getPow())
+			return new Monom(m1.coef+m2.getCoef(),m1.getPow());
+		return null;
+	}
+	
+	public static Monom sub(Monom m1,Monom m2) {
+		if(m1.getPow()==m2.getPow())
+			return new Monom(m1.coef-m2.getCoef(),m1.getPow());
+		return null;
+	}
+	
+	public static Monom mul(Monom m1, Monom m2) {
+		return new Monom(m1.coef*m2.coef,m1.getPow()+m2.getPow());
+	}
+	
+	public static Monom div(Monom m1, Monom m2) {
+		return new Monom(m1.coef/m2.coef,m1.getPow()-m2.getPow());
+	}
 }
