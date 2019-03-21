@@ -38,6 +38,7 @@ public class Controller {
 			view.divResult.setVisible(false);
 			view.polinom2.setVisible(true);
 			view.t1.setText("Polinomul 1:");
+			view.oppSel2L.setText("Adunare");
 			selectedOpperation = opp.ADD;
 		}
 
@@ -49,6 +50,7 @@ public class Controller {
 			view.divResult.setVisible(false);
 			view.polinom2.setVisible(true);
 			view.t1.setText("Polinomul 1:");
+			view.oppSel2L.setText("Scadere");
 			selectedOpperation = opp.SUB;
 		}
 
@@ -60,6 +62,7 @@ public class Controller {
 			view.divResult.setVisible(false);
 			view.polinom2.setVisible(true);
 			view.t1.setText("Polinomul 1:");
+			view.oppSel2L.setText("Inmultire");
 			selectedOpperation = opp.MUL;
 		}
 
@@ -71,6 +74,7 @@ public class Controller {
 			view.divResult.setVisible(true);
 			view.polinom2.setVisible(true);
 			view.t1.setText("Polinomul 1:");
+			view.oppSel2L.setText("Impartire");
 			selectedOpperation = opp.DIV;
 		}
 
@@ -82,6 +86,7 @@ public class Controller {
 			view.divResult.setVisible(false);
 			view.polinom2.setVisible(false);
 			view.t1.setText("Polinomul:");
+			view.oppSel2L.setText("Derivare");
 			selectedOpperation = opp.DER;
 		}
 	}
@@ -92,6 +97,7 @@ public class Controller {
 			view.divResult.setVisible(false);
 			view.polinom2.setVisible(false);
 			view.t1.setText("Polinomul:");
+			view.oppSel2L.setText("Integrare");
 			selectedOpperation = opp.ITG;
 		}
 	}

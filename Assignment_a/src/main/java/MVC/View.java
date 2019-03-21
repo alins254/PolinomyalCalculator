@@ -24,6 +24,7 @@ public class View extends JFrame{
 	JPanel result = new JPanel();
 	JPanel divResult = new JPanel();
 	JPanel calculate = new JPanel();
+	JPanel oppSelected = new JPanel();
 	
 	JButton calculateB = new JButton("Calculeaza");
 	JButton addB = new JButton("+");
@@ -42,6 +43,8 @@ public class View extends JFrame{
 	JLabel t2 = new JLabel("Polinomul 2", JLabel.CENTER);
 	JLabel resultL = new JLabel("Rezultatul este", JLabel.CENTER);
 	JLabel restL = new JLabel("Cu restul", JLabel.CENTER);
+	JLabel oppSelL = new JLabel("Operatia selectata este:", JLabel.CENTER);
+	JLabel oppSel2L = new JLabel("Impartire", JLabel.CENTER);
 	
 	public View() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -49,6 +52,20 @@ public class View extends JFrame{
 		setSize(700,700);
 		setVisible(true);
 		addPanels();
+		JOptionPane.showMessageDialog(this, "Ghid de utilizare:\n"
+				+ "->Variabila utilizata este 'x'\n"
+				+ "->Mai intai se selecteaza operatia, "
+				+ "apoi se introduc polinoamele, \n"
+				+ "in final apasandu-se butonul 'Calculeaza'"
+				+ " pentru a se realiza operatia\n"
+				+ "\nForme acceptate:\n"
+				+ "->10*x^2\n"
+				+ "->10x^2\n"
+				+ "->10*x\n"
+				+ "->10x\n"
+				+ "->x^2\n"
+				+ "->x\n"
+				+ "->10\n");
 	}
 	
 	private void addPanels() {
@@ -69,6 +86,9 @@ public class View extends JFrame{
 		divResult.add(rest);
 		divResult.setLayout(new GridLayout(2,1));
 		calculate.add(calculateB);
+		oppSelected.setLayout(new GridLayout(2,1));
+		oppSelected.add(oppSelL);
+		oppSelected.add(oppSel2L);
 		
 		rightpanel.setLayout(new GridLayout(8,1));
 		rightpanel.add(label2);
@@ -78,6 +98,7 @@ public class View extends JFrame{
 		rightpanel.add(calculate);
 		rightpanel.add(result);
 		rightpanel.add(divResult);
+		rightpanel.add(oppSelected);
 		
 		add(buttons);
 		add(rightpanel);

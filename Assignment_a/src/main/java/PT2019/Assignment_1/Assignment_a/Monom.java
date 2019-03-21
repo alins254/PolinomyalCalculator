@@ -80,23 +80,28 @@ public class Monom implements Comparable<Object>{
 		if(coef == (int)coef)
 			return this.toStringInt();
 		if(pow == 0)
-			s+=coef;
+			s+=format(coef);
 		else
 			if(pow==1)
-				if(coef==1)
+				if(format(coef)==1)
 					s+="x";
-				else if(coef == -1)
+				else if(format(coef) == -1)
 						s+="-x";
 					 else
-						s+=coef+"x";
+						s+=format(coef)+"x";
 			else
-				if(coef==1)
+				if(format(coef)==1)
 					s+="x^"+pow;
-				else if(coef == -1)
+				else if(format(coef) == -1)
 						s+="-x^"+pow;
 					 else
-						s+=coef+"x^"+pow;
+						s+=format(coef)+"x^"+pow;
 		return s;
+	}
+	public Double format(double n) {
+		int res = (int)(n*100);
+		Double result = (double)res;
+		return result/100.;
 	}
 	
 	public static Monom add(Monom m1,Monom m2) {
@@ -117,5 +122,13 @@ public class Monom implements Comparable<Object>{
 	
 	public static Monom div(Monom m1, Monom m2) {
 		return new Monom(m1.coef/m2.coef,m1.getPow()-m2.getPow());
+	}
+	
+	public boolean isEqual(Monom m) {
+		if(this.pow!=m.pow)
+			return false;
+		if(this.coef!=m.coef)
+			return false;
+		return true;
 	}
 }

@@ -143,10 +143,13 @@ public class Polinom {
 		while(!this.polin.isEmpty()) {
 			if(this.polin.getFirst().getPow()<divider.polin.getFirst().getPow())
 				break;
+			if(this.polin.getFirst().getCoef()==0) {
+				this.polin.removeFirst();
+				continue;
+			}
 			if(divider.polin.isEmpty())
 				break;
-			if(divider.polin.getFirst().getCoef()==0)
-			{
+			if(divider.polin.getFirst().getCoef()==0){
 				divider.polin.removeFirst();
 				continue;
 			}
@@ -183,5 +186,21 @@ public class Polinom {
 			
 		if(!result.polin.isEmpty()) Collections.sort(result.polin);
 		return result;
+	}
+	
+	public boolean isEqual(Polinom p) {
+		if(this.polin.size()!=p.polin.size())
+			return false;
+		Collections.sort(this.polin);
+		Collections.sort(p.polin);
+		Iterator<Monom> i = this.polin.iterator();
+		Iterator<Monom> j = p.polin.iterator();
+		while(i.hasNext()) {
+			Monom m1 = (Monom)i.next();
+			Monom m2 = (Monom)j.next();
+			if(!m1.isEqual(m2))
+				return false;
+		}
+		return true;
 	}
 }

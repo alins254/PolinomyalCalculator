@@ -31,7 +31,6 @@ public class Model{
 	}
 	
 	private Monom matching(String s) throws Exception{
-		
 		String pattern[] = new String[7];
 		pattern[0] = "(^\\d+)(\\*)(x)(\\^)(\\d+$)";
 		pattern[1] = "(^\\d+)(x)(\\^)(\\d+$)";
@@ -40,7 +39,6 @@ public class Model{
 		pattern[4] = "(^\\d+)(x$)";
 		pattern[5] = "(^x$)";
 		pattern[6] = "(^\\d+$)";
-		
 		int i=0;
 		Pattern r = Pattern.compile(pattern[i]);
 		Matcher m = r.matcher(s);
